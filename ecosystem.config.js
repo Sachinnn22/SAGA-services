@@ -3,7 +3,7 @@ module.exports = {
         {
             name: "cloud-sql-auth-proxy",
             script: "./cloud-sql-proxy",
-            args: "fitbuddy-505618:asia-south1:mysql-ins fitbuddy-505618:asia-south1:postgres-ins --private-ip",
+            args: "directed-post-506508-i4:asia-south1:postgres-ins --private-ip",
             log_file: "./logs/cloud-sql-proxy.log",
         },
         {
