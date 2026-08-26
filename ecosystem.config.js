@@ -21,10 +21,10 @@ module.exports = {
             instances: 2,
         },
         {
-            name: "appoinment-service",
+            name: "appointment-service",
             script: "java",
-            args: "-jar ./appoinment-service/target/appoinment-service-0.0.1-SNAPSHOT.jar",
-            log_file: "./logs/appoinment-service.log",
+            args: "-jar ./appointment-service/target/appointment-service-0.0.1-SNAPSHOT.jar",
+            log_file: "./logs/appointment-service.log",
             instances: 2,
         }
     ]
