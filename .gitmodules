@@ -1,0 +1,9 @@
+[submodule "user-service"]
+	path = user-service
+	url = https://github.com/Sachinnn22/SAGA-user-service.git
+[submodule "salon-service"]
+	path = salon-service
+	url = https://github.com/Sachinnn22/SAGA-saloon-service.git
+[submodule "appoinment-service"]
+	path = appoinment-service
+	url = https://github.com/Sachinnn22/SAGA-appoinment-service.git
