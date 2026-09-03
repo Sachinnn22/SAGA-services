@@ -26,32 +26,31 @@ Welcome to the core business services repository for the **SAGA** ecosystem. Thi
 
 The platform consists of three core business domain services:
 
-### 1. User/Member Service (`user-service` / `user-service`)
-* **Role:** Profile management, Auth database, and Avatar/Media uploads.
-* **Port:** Dynamic (Internal Routing Map: `8082`)
+### 1. User/Member Service (`user-service`)
+* **Role:** Profile management and Auth database.
+* **Port:** Dynamic (Internal Routing Map: `8001`)
 * **Database:** PostgreSQL (JPA / Hibernate)
 * **Key Operations:**
   * Handles member and user profiles, credentials, security validations, and assigned roles.
-  * Implements image uploading, saving profile pictures directly to the GCS bucket root (`directed-post-506508-i4-assets` or similar bucket).
   * Exposes profiles and user data to other microservices via REST endpoints.
 
-### 2. Fitness Service (`salon-service`)
-* **Role:** Progress reporting, PDF compiler, and cloud report uploads.
-* **Port:** Dynamic (Internal Routing Map: `8081`)
+### 2. Salon Service (`salon-service`)
+* **Role:** Salon management, media handling, and image uploads.
+* **Port:** Dynamic (Internal Routing Map: `8002`)
 * **Database:** PostgreSQL (Production), MySQL (Dev)
 * **Key Operations:**
-  * Fetches member records from the User Service and workout details using Spring RestClient (via load-balanced HTTP requests).
-  * Uses OpenPDF to construct progress graphs and reports directly in-memory (returning a raw byte stream).
-  * Uploads generated PDF files to the bucket under the GCS virtual folder `fitness-report/`.
-  * Downloads and streams the PDFs as a standard Spring `Resource`.
+  * Fetches member records from the User Service and service details using Spring RestClient (via load-balanced HTTP requests).
+  * Implements salon image uploading, saving salon pictures and media directly to the GCS bucket under the virtual folder `salon-images/`.
+  * Exposes salon details and image URLs to other microservices via REST endpoints.
 
-### 3. Workout Service (`appoinment-service`)
-* **Role:** Routine definitions, set records, and progress trackers.
+### 3. Appointment Service (`appoinment-service`)
+* **Role:** Routine definitions, booking records, and user-to-salon appointment management.
 * **Port:** Dynamic (Internal Routing Map: `8083`)
 * **Database:** MongoDB (via Spring Data MongoDB document repository)
 * **Key Operations:**
-  * Manages routines, exercises, difficulties, set sizes, and target muscle groups.
-  * Tracks routine completion rates and logs individual member history metrics.
+  * Manages appointments allowing users to seamlessly book slots with specific salons.
+  * Handles service definitions, scheduling, time slots, and categories.
+  * Validates user and salon interactions across services via inter-service communication.
 
 ---
 
